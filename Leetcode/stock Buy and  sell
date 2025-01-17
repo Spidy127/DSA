@@ -1,4 +1,5 @@
                                                                 //Brut-forces
+1>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -9,6 +10,25 @@ public:
             for(int j = i + 1; j < n; j++ ){
                 int profit = prices[j] - prices[i];
                 maxProfit = max(maxProfit, profit);
+            }
+        }
+        return maxProfit;
+    }
+
+                                                              //Optimal
+2>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int buy = prices[0];
+        int maxProfit = 0;
+        for(int i = 1; i < n; i++){
+            if(prices[i] < buy){
+                buy = prices[i];
+            }
+            else if(prices[i] - buy > maxProfit){
+                maxProfit = prices[i] - buy;
             }
         }
         return maxProfit;
